@@ -1,8 +1,10 @@
-This application queries real-time crypto market data, via the Coingecko api, to show a listing of top currencies in a
+This application queries current crypto market data, via the CoinGecko api, to show a listing of top currencies in a
 minimalist-inspired interface.
 
 Each row in the table has a star icon that allows you to add the token to a watchlist. You can see the watchlist in
 another other tab on the main page. Clicking on the star of a watched token will un-watch it.
+
+The data is currently re-fetched with a long interval to avoid rate-limiting.
 
 ## Getting API access
 
@@ -14,7 +16,7 @@ _Note that the free API works without a key, but it may help with rate limiting 
 
 ## Setting up the database via docker
 
-We use docker to initialize a simple postgres database with a table to store the tokens that are in our watchlist.
+This uses docker to initialize a simple postgres database with a table to store the tokens that are in our watchlist.
 
 Run the following command to build the docker image:
 
@@ -53,6 +55,7 @@ node server
 ```
 
 You can call the server endpoint with [localhost:8080/watchlist(localhost:8080/watchlist)
+
 ## Setting up the frontend
 
 Go back to the root project directory if you need to (`cd ../`), and navigate to the `frontend` folder:
@@ -74,6 +77,7 @@ NEXT_PUBLIC_API_KEY=your_key_here
 You can also copy the provided `.env.template` file to a `.env` file and replace the value.
 
 ### Install dependencies
+
 ```bash
 pnpm install
 # or
@@ -94,7 +98,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to start u
 
 ## Learn More
 
-Built with [Next.js](https://nextjs.org/), and bootstrapped
+Under the hood, this is built with [Next.js](https://nextjs.org/), and bootstrapped
 with [create-next-app](https://nextjs.org/docs/app/getting-started/installation).
+The backend server uses Node with Fastlify (for simplicity), which communicates with a postgres database sitting
+in a docker container.
 
-Coingecko free API docs: https://docs.coingecko.com/v3.0.1/reference/introduction
+All token data comes from the [Free CoinGecko API](https://docs.coingecko.com/v3.0.1/reference/introduction).

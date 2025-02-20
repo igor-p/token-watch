@@ -10,8 +10,11 @@ import {
 export default function useGetTokens() {
   return useQuery({
     queryKey: ["tokens"],
-    refetchOnMount: false, // prevent rate limiting, data should update on interval only,
-    refetchInterval: false, // temporarily false to prevent rate limiting
+    // prevent rate limiting (e.g. don't refetch if switching tabs), data should update on interval only,
+    refetchOnMount: false,
+    // Re-fetching (even with longer intervals) hits the rate-limit.
+    // TODO: figure out a way around it (or choose a different API)
+    refetchInterval: 20000,
     queryFn: async () => {
       // Get most of the token market data (fixed currency and sort since we don't offer the user a choice yet)
       const coins = await getCoinsMarkets({

@@ -67,11 +67,3 @@ export type CoinIdPriceMap = Record<
     usd_24h_vol: number
   }
 >
-
-/*
-  Get coin data by id (including platform/contract data)
- */
-export async function getCoinContracts(id: string) {
-  const response = await fetch(`${CG_API_BASE_URL}/coins/${id}`, fetchConfig)
-  return response.json()
-}
