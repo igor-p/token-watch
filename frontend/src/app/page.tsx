@@ -2,8 +2,8 @@
 
 import { QueryClientProvider } from "@tanstack/react-query"
 
+import TokenTablesView from "@/app/_components/TokenTablesView"
 import AlertError from "@/components/AlertError"
-import TokenTable from "@/components/TokenTable"
 import { CG_API_KEY } from "@/lib/coinGecko"
 import { queryClient } from "@/lib/queryClient"
 
@@ -21,9 +21,9 @@ export default function HomePage() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="mt-8">
+      <div className="mt-8 flex flex-col gap-4">
         <h2 className="text-3xl font-semibold tracking-tight">Token Watch</h2>
-        <TokenTable />
+        <TokenTablesView />
       </div>
     </QueryClientProvider>
   )

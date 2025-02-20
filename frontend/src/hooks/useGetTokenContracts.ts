@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 
 import { getCoinContracts } from "@/lib/coinGecko"
 
-export default function useGetTokenContractsQuery(id?: string | null) {
+export default function useGetTokenContracts(id?: string | null) {
   return useQuery({
     enabled: !!id,
     queryKey: ["token_contracts", id],

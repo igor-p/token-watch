@@ -24,9 +24,6 @@ export async function getCoinsMarkets(params: Record<string, string>) {
   ].join("?")
 
   const response = await fetch(url, fetchConfig)
-  if (!response.ok) {
-    console.log("Returned", response.status, response.statusText)
-  }
   return (await response.json()) as CoinMarketData[]
 }
 
@@ -59,9 +56,7 @@ export async function getCoinPriceByIds(ids: string[]) {
   ].join("?")
 
   const response = await fetch(url, fetchConfig)
-  if (!response.ok) {
-    console.log("Returned", response.status, response.statusText)
-  }
+
   return (await response.json()) as CoinIdPriceMap
 }
 

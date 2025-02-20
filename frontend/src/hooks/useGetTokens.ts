@@ -7,9 +7,11 @@ import {
 } from "@/lib/coinGecko"
 
 // For now, we're only going to get tokens in the Solana ecosystem
-export default function useGetTokensQuery() {
+export default function useGetTokens() {
   return useQuery({
     queryKey: ["tokens"],
+    refetchOnMount: false, // prevent rate limiting, data should update on interval only,
+    refetchInterval: false, // temporarily false to prevent rate limiting
     queryFn: async () => {
       // Get most of the token market data (fixed currency and sort since we don't offer the user a choice yet)
       const coins = await getCoinsMarkets({
