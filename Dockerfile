@@ -1,4 +1,4 @@
 FROM postgres
-ENV POSTGRES_PASSWORD=docker
+ENV POSTGRES_PASSWORD=tw-local-pw
 ENV POSTGRES_DB=token_watch
-COPY migrate.sql /docker-entrypoint-initdb.d/
+COPY init.sql /docker-entrypoint-initdb.d/

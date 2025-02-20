@@ -9,7 +9,7 @@ const fastify = Fastify({
 
 // jdbc:postgresql://localhost:5432/token_watch
 fastify.register(postgres, {
-  connectionString: "postgres://postgres:docker@localhost:5432/token_watch"
+  connectionString: "postgres://postgres:tw-local-pw@localhost:5432/token_watch"
 })
 
 // Enable CORS for requests from port 3000
